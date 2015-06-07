@@ -2,6 +2,13 @@ module Arabic
   module To
     module English
 
+		POWS = {
+			100_000_000 => "billion",
+			100_000 => "million",
+			1000 => "thousand",
+			100 => "hundred"
+		}
+
 		def convert number
 
 			raise ArgumentError.new( "Integer number expected" ) unless number.is_a?( Fixnum )
@@ -18,13 +25,47 @@ module Arabic
 
 				convert_teen( number )
 
-			elsif number < 100 && ( number % 10 ) == 0
+			elsif number < 100
 
-				convert( number / 10 ) + "ty"
+				if ( mdu = number % 10 ) == 0
 
-			elsif number < 100 && ( mdu = number % 10 ) > 0
+					convert( number / 10 ) + "ty"
 
-				convert( number - mdu ) + " " + convert(mdu)
+				else
+
+					convert( number - mdu ) + " " + convert(mdu)
+
+				end
+
+			else
+
+				result = ""
+
+				residue = number
+
+				POWS.each do |div, name|
+
+					nom = residue / div
+
+					if nom > 0
+
+						result += convert( nom ) + " " + name
+
+					end
+
+					residue = residue % div
+
+				end
+
+				if residue > 0
+
+					result + " and " + convert( residue )
+
+				else
+
+					result
+
+				end
 
 			end
 
@@ -37,6 +78,11 @@ module Arabic
 			def convert_decimal_base number
 
 				case number
+
+				when 0
+
+					"zero"
+
 
 				when 1
 

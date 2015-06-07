@@ -167,4 +167,22 @@ describe Arabic::To::English do
 		end
 
 	end
+
+	describe "*hundred *" do
+
+		it "100" do
+
+			expect( subject.convert( 100 ) ).to eq( "one hundred" )
+
+			expect( subject.convert( 101 ) ).to eq( "one hundred and one" )
+
+			expect( subject.convert( 211 ) ).to eq( "two hundred and eleven" )
+
+			expect( subject.convert( 481 ) ).to eq( "four hundred and eighty one" )
+
+			expect( subject.convert( 881 ) ).to eq( "eight hundred and eighty one" )
+
+		end
+
+	end
 end
