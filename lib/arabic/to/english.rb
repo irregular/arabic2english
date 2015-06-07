@@ -13,6 +13,8 @@ module Arabic
 
 			raise ArgumentError.new( "Integer number expected" ) unless number.is_a?( Fixnum )
 
+			number = number.abs
+
 			if number <= 10
 
 				convert_decimal_base( number )

@@ -2,11 +2,21 @@ require "arabic/to/english"
 
 describe Arabic::To::English do
 
-	it "rejects invalid inputs" do
+	describe "input validation" do
 
-		expect { subject.convert( 'x' ) }.to raise_exception( ArgumentError )
+		it "rejects non-number inputs" do
 
-		expect { subject.convert( 1.2 ) }.to raise_exception( ArgumentError )
+			expect { subject.convert( 'x' ) }.to raise_exception( ArgumentError )
+
+			expect { subject.convert( 1.2 ) }.to raise_exception( ArgumentError )
+
+		end
+
+		it "converts input to absolute" do
+
+			expect( subject.convert( -10 ) ).to eq( "ten" )
+
+		end
 
 	end
 
