@@ -24,6 +24,8 @@ describe Arabic::To::English do
 
 		it {
 
+			expect( subject.convert( 0 ) ).to eq( "zero" )
+
 			expect( subject.convert( 1 ) ).to eq( "one" )
 
 			expect( subject.convert( 2 ) ).to eq( "two" )
