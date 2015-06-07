@@ -90,4 +90,39 @@ describe Arabic::To::English do
 
 	end
 
+	describe "teens" do
+
+		# 14, 16, 17, 18, 19
+
+		it "14" do
+
+			expect( subject.convert( 14 ) ).to eq("fourteen")
+
+		end
+
+		it "16" do
+
+			expect( subject.convert( 16 ) ).to eq("sixteen")
+
+		end
+
+		it "17" do
+
+			expect( subject.convert( 17 ) ).to eq("seventeen")
+
+		end
+
+		it "18" do
+
+			expect( subject.convert( 18 ) ).to eq("eightteen")
+
+		end
+
+		it "19" do
+
+			expect( subject.convert( 19 ) ).to eq("nineteen")
+
+		end
+
+	end
 end
