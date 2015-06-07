@@ -3,8 +3,8 @@ module Arabic
     module English
 
 		POWS = {
-			100_000_000 => "billion",
-			100_000 => "million",
+			1_000_000_000 => "billion",
+			1_000_000 => "million",
 			1000 => "thousand",
 			100 => "hundred"
 		}
@@ -39,7 +39,7 @@ module Arabic
 
 			else
 
-				result = ""
+				result = []
 
 				residue = number
 
@@ -49,7 +49,15 @@ module Arabic
 
 					if nom > 0
 
-						result += convert( nom ) + " " + name
+						if result.length > 0
+
+							result << "and"
+
+						end
+
+						result << convert( nom )
+
+						result << name
 
 					end
 
@@ -59,13 +67,17 @@ module Arabic
 
 				if residue > 0
 
-					result + " and " + convert( residue )
+					result << "and"
+
+					result << convert( residue )
 
 				else
 
 					result
 
 				end
+
+				result.join(" ")
 
 			end
 

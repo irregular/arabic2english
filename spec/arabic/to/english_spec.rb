@@ -185,4 +185,54 @@ describe Arabic::To::English do
 		end
 
 	end
+
+	describe "*thousand *" do
+
+		it "1000" do
+
+			expect( subject.convert( 1000 ) ).to eq( "one thousand" )
+
+		end
+
+		it "1001" do
+
+			expect( subject.convert( 1001 ) ).to eq( "one thousand and one" )
+
+		end
+
+		it "2080" do
+
+			expect( subject.convert( 2080 ) ).to eq( "two thousand and eighty" )
+
+		end
+
+		it "8188" do
+
+			expect( subject.convert( 8188 ) ).to eq( "eight thousand and one hundred and eighty eight" )
+
+		end
+
+		it "281_200" do
+
+			expect( subject.convert( 281_200 ) ).to eq( "two hundred and eighty one thousand and two hundred" )
+
+		end
+
+	end
+
+	describe "*millions" do
+
+		it "1_281_200" do
+
+			expect( subject.convert( 1_281_200 ) ).to eq( "one million and two hundred and eighty one thousand and two hundred" )
+
+		end
+
+		it "88_281_200" do
+
+			expect( subject.convert( 88_281_200 ) ).to eq( "eighty eight million and two hundred and eighty one thousand and two hundred" )
+
+		end
+
+	end
 end
