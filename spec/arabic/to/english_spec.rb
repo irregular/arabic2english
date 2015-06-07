@@ -88,11 +88,15 @@ describe Arabic::To::English do
 
 		end
 
+		it "80" do
+
+			expect( subject.convert( 80 ) ).to eq( "eighty" )
+
+		end
+
 	end
 
-	describe "teens" do
-
-		# 14, 16, 17, 18, 19
+	describe "*teens" do
 
 		it "14" do
 
@@ -121,6 +125,44 @@ describe Arabic::To::English do
 		it "19" do
 
 			expect( subject.convert( 19 ) ).to eq("nineteen")
+
+		end
+
+	end
+
+	describe "*ty" do
+
+		it "60" do
+
+			expect( subject.convert( 60 ) ).to eq( "sixty" )
+
+		end
+
+		it "70" do
+
+			expect( subject.convert( 70 ) ).to eq( "seventy" )
+
+		end
+
+	end
+
+	describe "*ty and *" do
+
+		it "61" do
+
+			expect( subject.convert( 61 ) ).to eq( "sixty one" )
+
+		end
+
+		it "81" do
+
+			expect( subject.convert( 81 ) ).to eq( "eighty one" )
+
+		end
+
+		it "41" do
+
+			expect( subject.convert( 41 ) ).to eq( "forty one" )
 
 		end
 

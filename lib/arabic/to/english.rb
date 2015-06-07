@@ -10,13 +10,21 @@ module Arabic
 
 				convert_decimal_base( number )
 
+			elsif (irregular_number = convert_irregular( number ))
+
+				irregular_number
+
 			elsif number < 20
 
 				convert_teen( number )
 
-			else
+			elsif number < 100 && ( number % 10 ) == 0
 
-				convert_irregular_greater_19( number )
+				convert( number / 10 ) + "ty"
+
+			elsif number < 100 && ( mdu = number % 10 ) > 0
+
+				convert( number - mdu ) + " " + convert(mdu)
 
 			end
 
@@ -74,9 +82,25 @@ module Arabic
 
 			end
 
-			def convert_irregular_greater_19 number
+			def convert_irregular number
 
 				case number
+
+				when 11
+
+					"eleven"
+
+				when 12
+
+					"twelve"
+
+				when 13
+
+					"thirteen"
+
+				when 15
+
+					"fifteen"
 
 				when 20
 
@@ -94,33 +118,17 @@ module Arabic
 
 					"fifty"
 
+				when 80
+
+					"eighty"
+
 				end
 
 			end
 
 			def convert_teen( number )
 
-				case  number
-				when 11
-
-					"eleven"
-
-				when 12
-
-					"twelve"
-
-				when 13
-
-					"thirteen"
-
-				when 15
-
-					"fifteen"
-				else
-
-					convert( number % 10 ) + "teen"
-
-				end
+				convert( number % 10 ) + "teen"
 
 			end
 
